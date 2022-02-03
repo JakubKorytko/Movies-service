@@ -45,7 +45,7 @@ app.post("/movies", authorization, async (req, res) => {
   const LIMIT = 5;
 
   var result = await db.query(
-    `SELECT COUNT(*) AS CREATED FROM movies WHERE creatorID = ${authData.userId} AND created > "${limits[0]}" AND created < "${limits[1]}";`,
+    `SELECT COUNT(*) AS CREATED FROM movies WHERE creatorID = ${authData.userId} AND created > '${limits[0]}' AND created < '${limits[1]}';`,
   1)
 
   if (result[0]["CREATED"] >= LIMIT && authData.role == "basic") {
@@ -53,15 +53,32 @@ app.post("/movies", authorization, async (req, res) => {
     return false;
   }
 
+  var movieDetails = await OMDB.get(req.body.title);
+
+  if (movieDetails == false) {
+    noInfo=true
+    movieDetails = {title: req.body.title}
+  } else {
+    noInfo=false
+  };
+
   var movie = {
-    ...await OMDB.get(req.body.title),
+    ...movieDetails,
     created: new Date().toISOString().slice(0, 19).replace('T', ' '),
     creatorID: authData.userId
   }
 
+  console.log(movie);
+
   db.insert("movies", movie)
 
-  res.send("Movie added");
+  if (noInfo == true) {
+    res.send("Movie added but additional info not found in OMDB (inserted title only)");
+  } else {
+    res.send("Movie added");
+  }
+
+
 })
 
 app.get("/movies", authorization, async (req, res) => {

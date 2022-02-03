@@ -10,7 +10,7 @@ function rand(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
 }
 
-test('ombd fetch works', async () => {
+test('omdb fetch works', async () => {
     var ans = await OMDB.get("spiderman");
     expect(ans.Director).toBe("Christian Davi")
 })
