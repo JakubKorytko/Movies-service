@@ -23,7 +23,7 @@ installed on your computer to run the service
 1. Clone this repository
 1. There are some default settings in .env file (root dir)
 
-    ```js
+    ```
     JWT_SECRET=iWpN8pRnxRVRivbz26VPvfH9OhJ3dufUMjz4WFCkRt2KT6Hp1ecPY0G384mnlXyp4lhF //secret for jwt tokens
     API_KEY=acc16300 //api key for omdb service
     MOVIES_PORT=3001 //port used by movies service
@@ -85,14 +85,14 @@ Both services defines two user accounts to use
 
 1. `Basic` user
 
-```python
+```js
  username: 'basic-thomas'
  password: 'sR-_pcoow-27-6PAwCD8'
 ```
 
 1. `Premium` user
 
-```python
+```js
 username: 'premium-jim'
 password: 'GBLtTyq3E_UNjFnpo9m6'
 ```
