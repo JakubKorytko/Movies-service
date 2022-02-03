@@ -27,7 +27,6 @@ test('database works', async () => {
 test('verification works', async () => {
     var token = authFactory(process.env.JWT_SECRET)("basic-thomas","sR-_pcoow-27-6PAwCD8");
     var result = verify(token);
-    console.log(result);
     expect(result.name).toBe("Basic Thomas");
 })
 
