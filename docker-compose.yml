@@ -1,0 +1,28 @@
+version: "3.2"
+services:
+  movies:
+    container_name: movies-service
+    hostname: movies-service
+    command: node ./movies/server.js
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - published: ${MOVIES_PORT:-3001}
+        target: 3001
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      API_KEY: ${API_KEY}
+  auth:
+    container_name: auth-service
+    hostname: auth-service
+    command: node auth/server.js
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - published: ${AUTH_PORT:-3000}
+        target: 3000
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      AUTH_PORT: ${AUTH_PORT}

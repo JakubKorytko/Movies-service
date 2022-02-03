@@ -1,0 +1,24 @@
+{
+  "name": "node-movies-svc",
+  "version": "1.0.0",
+  "description": "Node.js recruitment task",
+  "scripts": {
+    "test": "jest",
+    "start": "node ./movies/server.js"
+  },
+  "keywords": [],
+  "author": "Jakub Korytko",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "better-sqlite3": "^7.5.0",
+    "body-parser": "1.19.0",
+    "dotenv": "^15.0.0",
+    "express": "4.17.1",
+    "jest": "^27.4.7",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.7",
+    "save-dev": "^0.0.1-security",
+    "sqlite": "^4.0.23",
+    "sqlstring": "^2.3.2"
+  }
+}
