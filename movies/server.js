@@ -57,7 +57,7 @@ app.post("/movies", authorization, async (req, res) => {
 
   if (movieDetails == false) {
     noInfo=true
-    movieDetails = {title: req.body.title}
+    movieDetails = {title: req.body.title, Released: "N/A", Genre: "N/A", Director: "N/A"}
   } else {
     noInfo=false
   };
