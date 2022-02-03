@@ -27,6 +27,7 @@ function monthLimits() {
   var date = new Date();
   var userTimezoneOffset = new Date().getTimezoneOffset() * 60000;
 
+
   var bottom = new Date(date.getFullYear(), date.getMonth(),1);
   bottom = new Date(bottom.getTime() - userTimezoneOffset)
   bottom = bottom.toISOString().slice(0, 19).replace('T', ' ');
